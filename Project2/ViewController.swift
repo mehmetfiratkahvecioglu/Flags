@@ -37,6 +37,9 @@ class ViewController: UIViewController {
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
+        // project 3 challenge 3
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(replayButtonTapped))
+        
         
         askQuestion()
         self.navigationController!.navigationBar.backgroundColor = UIColor.yellow
@@ -124,9 +127,18 @@ class ViewController: UIViewController {
         questionsAnswered = 0
         scoreLabel.text = "Score : \(String(score))/\(questionsAnswered)"
         askQuestion()
-        
-        
     }
+    
+    // project 3 challenge 3
+        @objc func replayButtonTapped() {
+            let ac = UIAlertController(title: "Score", message: "Score: \(score)/\(questionsAnswered)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .cancel, handler: nil))
+            ac.addAction(UIAlertAction(title: "Replay", style: .destructive , handler: (rePlay ) ))
+            
+                    present(ac, animated: true)
+            
+        }
+    
     
 }
 
